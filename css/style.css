@@ -1,4 +1,87 @@
-h1{
-  border-color: #d3e644;
-  border-style: dashed;
+
+
+.inputdiv{
+  margin-top: 5vh; 
+  height: 300px;
+  width: 33vw;
+  border: solid, 2px, grey;
+  position: relative;
+
+}
+
+.inputdiv label, input{
+  position: relative;
+  left: 5vw;
+}
+
+.inputdiv input{
+  border-radius: 5px;
+  width: 15vw;
+  height: 4vh;
+  margin-bottom: 15px;
+}
+
+.inputdiv .Namec{
+  margin-right: 20px;
+}
+
+.inputdiv .IDc{
+  margin-right: 40px;
+}
+
+.inputdiv .Pricec{
+  margin-right: 25px;
+}
+
+.inputdiv button{
+  position: absolute;
+  right: 40px;
+ 
+}
+
+.inputdiv h3{
+  margin-left: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px){
+  .inputdiv{
+    width: 70vw;
+  }
+  .inputdiv label, input{
+  position: relative;
+  left: 10vw;
+}
+}
+
+@media screen and (max-width: 400px){
+  .inputdiv{
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 400px){
+
+  .inputdiv input{
+  border-radius: 5px;
+  width: 30vw;
+  height: 4vh;
+  margin-bottom: 15px;
+}
+
+}
+
+@media screen and (min-width: 700px){
+  .inputdiv h3{
+    font-size: 30px;
+  }
 }
