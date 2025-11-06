@@ -1,4 +1,4 @@
-# Web Dev Starter Code
+# M11.2 Lab My Simple Inventory
 
 ## Overview
 
