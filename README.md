@@ -2,7 +2,7 @@
 
 ## Overview
 
-TODO: The goal of the project is to simply simulate a full stack web development enviorment with assistance from AWS through the creation of a Simple Inventory App. The APP will simply be used to expirament with adding and removing items to a table with a combination of HTML, CSS and JavaScript
+ The goal of this project is to simply simulate a full stack web development enviorment with assistance from AWS through the creation of a Simple Inventory App. The APP will simply be used to expirament with adding and removing items to a table with a combination of HTML, CSS and JavaScript
 
 ## Compile and Run
 To use this app you must have VSCode with the Live Preview extension installed. When You run VsCode you need to click on the box with the maginifying glass in the top right. You can then view and interact with the web page by entering the values specified in the Add New Item to Database box then clicking add item. Then Load can be used to pull the items off AWS and display them in the table. Delete can then be used to delete rows from the table.
