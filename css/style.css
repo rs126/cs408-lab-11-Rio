@@ -6,7 +6,7 @@
   width: 33vw;
   border: solid, 2px, grey;
   position: relative;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 7px 9px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -132,5 +132,5 @@ td button:hover{
 }
 
 hr{
-  margin-right: 40vw;
+  margin-right: 30vw;
 }
