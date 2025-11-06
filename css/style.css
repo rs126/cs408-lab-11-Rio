@@ -6,6 +6,7 @@
   width: 33vw;
   border: solid, 2px, grey;
   position: relative;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -114,4 +115,22 @@ td {
   .inputdiv h3{
     font-size: 30px;
   }
+}
+
+#send-data:hover{
+  background-color: rgb(45, 250, 45);
+}
+
+
+
+td button:hover{
+  background-color: red;
+}
+
+#load-data:hover{
+  background-color: lawngreen;
+}
+
+hr{
+  margin-right: 40vw;
 }
