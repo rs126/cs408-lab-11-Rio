@@ -11,59 +11,18 @@
 </head>
 
 <body>
-    <h1>Simple Demo for PUT, GET, and DELETE</h1>
-
+    <div class="titlediv">
+        <p id="lambda-info"></p>
+    <h1>My Simple Inventory App</h1> <button id="load-data">Load All Items</button>
+    </div>
     <table id="item-table">
         <tr>
-            <th>Id</th><th>Name</th><th>Action</th>
+            <th>Id</th><th>Name</th><th>Price</th><th>Action</th>
         </tr>
     </table>
 
-    <p id="lambda-info">
-        <!-- loaded with AJAX -->
-    </p>
 
-    <button id="load-data">Load Data</button>
-    <p>Loads data from the server</p>
     
-
-    <p id ="test"></p>
-
-    <hr>
-    <!-- <button id="send-data">Send Data</button>
-    <p>Sends an example JSON object to the server with id 11111</p> -->
-    <!-- <script>
-        document.getElementById("send-data").onclick = function () {
-            let xhr = new XMLHttpRequest();
-            xhr.open("PUT", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send(JSON.stringify({
-                "id": "6666666",
-                "price": 19,
-                "name": "test put value"
-            }));
-        }
-    </script> -->
-
-
-
-    <hr>
-    <button id="delete-data">Delete Data</button>
-    <p>Deletes a JSON object from the server with 11111</p>
-    <!-- <script>
-        document.getElementById("item-table").onclick = function () {
-            let xhr = new XMLHttpRequest();
-            xhr.open("DELETE", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items/6666666");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send();
-        }
-    </script> -->
-
-
-
-
-
-
 
     <hr>
     <div>
@@ -80,7 +39,7 @@
             <label class="Pricec" for="Price">Price: </label>
             <input required type="text" name="Price" id="Price">
             <br>
-            <button id="send-data" type="button">Add Item</button>
+            <button  id="send-data" type="reset">Add Item</button>
         </form>
 
     </div>
@@ -88,28 +47,16 @@
 
 <script>
 
-    // function deletedata(eleid){
-    //     document.getElementById("item-table").onclick = function () {
-            
-    //         let xhr = new XMLHttpRequest();
-    //         xhr.open("DELETE", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items/" + eleid);
-    //         xhr.setRequestHeader("Content-Type", "application/json");
-    //         xhr.send();
-    //     }
-    // }
-
-
-
-    let price;
+   //AI use AI assisted
     document.getElementById("load-data").onclick = function () {
-        let lambda = document.getElementById("lambda-info");
-        let responsedata;
+        //let lambda = document.getElementById("lambda-info");
+
         let xhr = new XMLHttpRequest();
-        xhr.addEventListener("load", function () {
-            lambda.innerHTML = xhr.response;
-            responsedata = xhr.response;
+        // xhr.addEventListener("load", function () {
+        //     lambda.innerHTML = xhr.response;
+
             
-        });
+        // });
 
         let testele = document.getElementById("test");
         xhr.addEventListener("load", function () {
@@ -122,12 +69,14 @@
              table.querySelectorAll("tr:not(:first-child)").forEach(row => row.remove());
                 data.forEach(item => {
                     
-                    let row = table.insertRow();  // create a new row
-                    row.insertCell(0).textContent = item.id;   // ID column
-                    row.insertCell(1).textContent = item.name; // Name column
+                    // create a new row
+                    let row = table.insertRow();  
+                    row.insertCell(0).textContent = item.id;  
+                    row.insertCell(1).textContent = item.name;
+                    row.insertCell(2).textContent = item.price;
 
                     // Action column (example: a button)
-                    let actionCell = row.insertCell(2);
+                    let actionCell = row.insertCell(3);
                     let btn = document.createElement("button");
                     btn.textContent = "Delete";
                     btn.onclick = function () {
@@ -145,17 +94,10 @@
                         }
                     };
                     actionCell.appendChild(btn);
-                });
-            
+                }); 
         });
-
-
-
         xhr.open("GET", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items");
         xhr.send();
-
-
-
         }
 
         document.getElementById("send-data").onclick = function () {
@@ -173,13 +115,10 @@
             
             xhr.send(JSON.stringify({
                 "id": id,
-                "price": name,
-                "name": price
+                "price": price,
+                "name": name
             }));
         }
-
-
-
 
     </script>
 
