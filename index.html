@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Test AWS Lambda</title>
+    <title>My Simple Inventory App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/style.css">
@@ -13,115 +13,118 @@
 <body>
     <div class="titlediv">
         <p id="lambda-info"></p>
-    <h1>My Simple Inventory App</h1> <button id="load-data">Load All Items</button>
+        <h1>My Simple Inventory App</h1> 
+        <button id="load-data">Load All Items</button>
     </div>
     <table id="item-table">
         <tr>
-            <th>Id</th><th>Name</th><th>Price</th><th>Action</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
         </tr>
     </table>
 
-
-    
-
     <hr>
     <div>
-    <div class="inputdiv">
-        <h3>Add New Item to Database</h3>
-        <br>
-        <form id="formelement" action="">
-            <label class="IDc" for="ID">ID:</label>
-            <input required type="text" name="ID" id="ID">
+        <div class="inputdiv">
+            <h3>Add New Item to Database</h3>
             <br>
-            <label class="Namec" for="Name">Name:</label>
-            <input required type="text" name="Name" id="Name">
-            <br>
-            <label class="Pricec" for="Price">Price: </label>
-            <input required type="text" name="Price" id="Price">
-            <br>
-            <button  id="send-data" type="reset">Add Item</button>
-        </form>
+            <form id="formelement" action="">
+                <label class="IDc" for="ID">ID:</label>
+                <input required type="text" name="ID" id="ID">
+                <br>
+                <label class="Namec" for="Name">Name:</label>
+                <input required type="text" name="Name" id="Name">
+                <br>
+                <label class="Pricec" for="Price">Price: </label>
+                <input required type="text" name="Price" id="Price">
+                <br>
+                <button id="send-data" type="reset">Add Item</button>
+            </form>
 
+        </div>
     </div>
-    </div>
 
-<script>
+    <script>
 
-   //AI use AI assisted
-    document.getElementById("load-data").onclick = function () {
-        //let lambda = document.getElementById("lambda-info");
+        //AI use: AI assisted
+        document.getElementById("load-data").onclick = function () {
 
-        let xhr = new XMLHttpRequest();
-        // xhr.addEventListener("load", function () {
-        //     lambda.innerHTML = xhr.response;
+            //create a object to interact with a server
+            let xhr = new XMLHttpRequest();
 
-            
-        // });
+            xhr.addEventListener("load", function () {
 
-        let testele = document.getElementById("test");
-        xhr.addEventListener("load", function () {
-            
-            let btnid = 0;
-            let data = JSON.parse(xhr.responseText);
-           
+                //Parse JSON formated request
+                let data = JSON.parse(xhr.responseText);
 
-            let table = document.getElementById("item-table");
-             table.querySelectorAll("tr:not(:first-child)").forEach(row => row.remove());
+                let table = document.getElementById("item-table");
+
+                //Remove all rows except for first
+                table.querySelectorAll("tr:not(:first-child)").forEach(row => row.remove());
                 data.forEach(item => {
-                    
+
                     // create a new row
-                    let row = table.insertRow();  
-                    row.insertCell(0).textContent = item.id;  
+                    let row = table.insertRow();
+                    //update cells
+                    row.insertCell(0).textContent = item.id;
                     row.insertCell(1).textContent = item.name;
                     row.insertCell(2).textContent = item.price;
 
-                    // Action column (example: a button)
+                    // Action column for delete button
                     let actionCell = row.insertCell(3);
                     let btn = document.createElement("button");
                     btn.textContent = "Delete";
+                    /*AI Use: AI Assisted*/
                     btn.onclick = function () {
                         let deleteXhr = new XMLHttpRequest();
+                        //Create request to delete object and append item id to query string
                         deleteXhr.open("DELETE", `https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items/${item.id}`);
                         deleteXhr.setRequestHeader("Content-Type", "application/json");
                         deleteXhr.send();
-                        deleteXhr.onload = function(){
-                            if(deleteXhr.status == 200){
+                        //Confirm that deletion was sucessful
+                        deleteXhr.onload = function () {
+                            if (deleteXhr.status == 200) {
                                 console.log(`Item ${item.id} deleted`);
                                 row.remove();
-                            }else{
+                            } else {
                                 console.log(`ITEM DELETION FAILED`);
                             }
                         }
                     };
                     actionCell.appendChild(btn);
-                }); 
-        });
-        xhr.open("GET", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items");
-        xhr.send();
+                });
+            });
+            xhr.open("GET", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items");
+            xhr.send();
         }
 
+        //AI Use: AI Assisted
+        //When AddItem is clicked get the form elements data and send request
         document.getElementById("send-data").onclick = function () {
+            //Retrieve form and data
             const form1 = document.getElementById("formelement");
             const formData = new FormData(form1);
 
+            //Parse form data for required elements
             const id = formData.get("ID");
             const name = formData.get("Name");
             const price = parseFloat(formData.get("Price"));
 
+            //Craft Request to AWS
             let xhr = new XMLHttpRequest();
             xhr.open("PUT", "https://56pkakyp2j.execute-api.us-east-2.amazonaws.com/items");
             xhr.setRequestHeader("Content-Type", "application/json");
 
-            
+            //Send Request to AWS
             xhr.send(JSON.stringify({
                 "id": id,
                 "price": price,
                 "name": name
             }));
         }
-
     </script>
-
 </body>
 
 </html>
