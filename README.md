@@ -2,7 +2,10 @@
 
 ## Overview
 
-TODO: Write a project description
+TODO: The goal of the project is to simply simulate a full stack web development enviorment with assistance from AWS through the creation of a Simple Inventory App. The APP will simply be used to expirament with adding and removing items to a table with a combination of HTML, CSS and JavaScript
+
+## Compile and Run
+To use this app you must have VSCode with the Live Preview extension installed. When You run VsCode you need to click on the box with the maginifying glass in the top right. You can then view and interact with the web page by entering the values specified in the Add New Item to Database box then clicking add item. Then Load can be used to pull the items off AWS and display them in the table. Delete can then be used to delete rows from the table.
 
 ## Sources and Credits
 
@@ -15,14 +18,10 @@ permission from your instructor.
 
 A simple bulleted list below is sufficient. For example:
 
-- Bootstrap: https://getbootstrap.com/
-- jQuery: https://jquery.com/
-- Background image: https://unsplash.com/photos/...
-- Sound effects: https://freesound.org/people/...
-- Icons: https://fontawesome.com/
-- Fonts: https://fonts.google.com/
-- etc.
+- Reminder building a table: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro
+- Load table with AWS DATa: Chat GPT, https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+- Delete data: Chat GPT
+- ADD Item: Chat GPT
 
 
 
-https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro
